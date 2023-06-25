@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>making different modes of page</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #3c2e2e;
+    height: 53px;
+}
+
+.navigation {
+    display: flex;
+    padding-left: 13px;
+    color: aliceblue;
+}
+
+/* li:nth-child() */
+.imgTalha {
+    height: 44px;
+    border-radius: 183px;
+    width: 45px;
+    margin: 5px;
+}
+
+li {
+    list-style: none;
+    padding: 17px;
+
+    margin-left: 3px;
+}
+
+li a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+main{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+p{ 
+    background: #64d8eb;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    width: 50vw;;
+}
+.buttons{
+    display: flex;
+    justify-content: flex-end;
+}
+.buttons button{
+    padding: 0.6rem;
+    display: flex;
+    margin: 8px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+.black{
+    background: black;
+    color: white;
+}
+.yellow{
+    background: yellow;
+    color: white;
+}
+.orange{
+    background: orange;
+    color: white;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navigation">
+                <li> <a href="#">Home</a></li>
+                <li> <a href="#">Videos</a></li>
+                <li> <a href="#">Blog</a></li>
+                <li><a href="#">ContactMe</a></li>
+            </ul>
+            <div class="buttons">
+                <button class="black" onclick="background('black')"></button>
+                <button class="yellow" onclick="background('yellow')"></button>
+                <button class="orange" onclick="background('orange')"></button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi corrupti ad voluptatem quo veniam quam facere at obcaecati impedit excepturi distinctio rerum, magni quidem ducimus sit quia officia, facilis harum voluptatibus tenetur delectus exercitationem quaerat nisi porro! Velit aut, unde doloremque autem alias labore exercitationem tenetur sed veniam placeat itaque.</p>
+    </main>
+</body>
+<script>
+    function removeClasses(){
+        document.body.classList.remove('black');
+        document.body.classList.remove('yellow');
+        document.body.classList.remove('orange');
+    }
+    function background(cls){
+        removeClasses();
+        document.body.classList.add(cls);
+    }
+</script>
+</html>

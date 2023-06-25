@@ -1,0 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Inconsolata:wght@700&family=Indie+Flower&family=Lato:ital,wght@1,700&family=Poppins:wght@300&family=Roboto&family=Sansita+Swashed:wght@300&display=swap');
+
+.container{
+    /* background: chartreuse; */
+    border-radius: 15px;
+    max-width: 778px;
+    font-family: 'Inconsolata', monospace
+}
+
+h2 {
+    border: 2px solid black;
+    padding: 8px;
+    background: green;
+    color: white;
+line-height: 45px;
+}
+
+img{
+    height: 20vh;
+    border-radius: 15px;
+}
+
+.list-group-item{
+    border: 2px solid black;
+    font-size: larger;
+}
+
+#profilesbtn{
+    font-size: larger;
+    border: 2px solid black;
+}

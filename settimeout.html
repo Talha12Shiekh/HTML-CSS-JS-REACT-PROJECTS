@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?fwasily=Inconsolata:wght@300&display=swap" rel="stylesheet"> 
+    <title>learning settimeout</title>
+    <style>
+       
+        button{
+            display: inline-block;
+        }
+        p{
+            text-align: center;
+font-size: 40px;
+color: darkblue;
+font-family: 'Inconsolata', monospace;
+        }
+        button{
+            height: 50px;
+width: 120px;
+background: yellow;
+border: 2px solid black;
+border-radius: 12px;
+font-size: 24px;
+text-align: center;
+box-shadow: 2px 2px 9px -2px green;
+font-family: 'Inconsolata', monospace;
+        }
+        .buton{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+<body>
+    <p>can you stop me when i reach 5</p>
+    <br>
+    <div class="buton">
+
+        <button id="btn">start</button>
+        <button id="btn1">stop</button>
+    </div>
+</body>
+<script>
+    const stopnum = document.querySelector('p')
+const btn = document.querySelector('#btn')
+  const stopinterval = document.querySelector('#btn1')
+let num = 0; 
+let timeref;
+const showmynum = () =>{
+    stopnum.innerHTML = `loading.......`;
+  timeref = setInterval(() => {
+    stopnum.innerHTML = `${num}`
+    num++;
+}, 1000);
+}
+
+btn.addEventListener('click',showmynum);
+stopinterval.addEventListener('click',() =>{
+    clearInterval(timeref);
+});
+  
+
+
+</script>
+</html>

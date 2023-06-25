@@ -1,0 +1,199 @@
+.body-background {
+    background: #13466e;
+}
+
+.navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 111111;
+}
+
+.fa-edit,
+.fa-trash-alt,
+.fa-circle-exclamation,
+.fa-light
+ {
+    color: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #2ecc71;
+    z-index: -1;
+}
+
+.fa-light{
+    background:#13466e;
+}
+
+.fa-circle-exclamation {
+    background: blue;
+}
+
+.fa-circle-exclamation:hover {
+    background-color: #fff;
+    color: blue;
+    filter: drop-shadow(0 10px 8px #fff);
+}
+
+.white{
+    color:white !important; 
+}
+
+.black{
+    color: black !important;
+}
+
+#editbtn,
+#redbtn,
+.dltbtn {
+    border: none;
+    background: none;
+}
+
+.fa-trash-alt {
+    background-color: #e74c3c;
+}
+
+.fa-edit:hover {
+    background-color: #fff;
+    color: #27ae60;
+    filter: drop-shadow(0 10px 8px #fff);
+}
+
+.fa-trash-alt:hover {
+    background-color: #fff;
+    color: #e74c3c;
+    filter: drop-shadow(0 10px 8px #fff);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inconsolata', monospace;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
+
+.buttons {
+    height: 10vh;
+    margin-left: 88px;
+}
+
+.white {
+    color: white !important;
+}
+
+.blue {
+    background: #254d59;
+    color: white;
+}
+
+.card-background {
+    background: #254d59 !important;
+    border: 2px solid white !important;
+}
+.light-background {
+    background: white !important;
+    border: 2px solid black !important;
+}
+
+.note-background {
+    background: #13466e !important;
+    color: white !important;
+    border: 2px solid white !important;
+}
+
+.blackWHite {
+    background: white;
+    color: black;
+}
+
+.deleted-notes-box {
+    z-index: 1111;
+    max-width: 500px;
+    position: fixed;
+    bottom: 100px;
+    width: 100%;
+    right: 20px;
+
+}
+
+.deleted-notes {
+    padding: 20px;
+    list-style: none;
+    border-radius: 5px;
+    background: #fff;
+    max-height: 500px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s ease;
+    border: none;
+}
+
+.deleted-notes.show {
+    opacity: 1;
+    pointer-events: auto;
+    border: 1px solid black;
+}
+
+.notecard.deleted {
+    display: none;
+}
+
+.deleted-notes .single-note {
+    font-size: 17px;
+    display: flex;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.single-note:last-child {
+    border-bottom: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.single-note b {
+    font-weight: 500;
+}
+
+.single-note button {
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 5px;
+    background:blue;
+    padding: 6px 17px;
+    font-size: 15px;
+}
+
+.deleted {
+    display: none;
+}
+
+.deleted-notes-box .delete-icon {
+    position: absolute;
+    border: 2px solid red;
+    right: 30px;
+    bottom: -54px;
+    background: #fff;
+    height: 50px;
+    width: 50px;
+    color: #ff0000;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+    border-radius: 50%;
+}

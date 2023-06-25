@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    
+    <title>animated thermometer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Indie+Flower&family=Lato:ital,wght@1,700&family=Sansita+Swashed:wght@300&display=swap');
+        body{
+            background: rgb(52, 52, 148); 
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Inconsolata', monospace;
+        }
+        h1{
+            text-transform: capitalize;
+            font-size: 24vh;
+color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="outerdiv">
+        <div class="innerdiv">
+            <h1 >i am <br> thermometer <i class="fa" id="temp"></i></h1>
+        </div>
+    </div>
+</body>
+<script>
+  const thermometer = () =>{
+    let temp = document.getElementById('temp');
+    temp.innerHTML = "&#xf2cb;";
+    temp.style.color = "white";
+
+    setTimeout(() => {
+        temp.innerHTML = "&#xf2ca;";
+        temp.style.color = "yellow";
+    }, 1000);
+
+    setTimeout(() => {
+        temp.innerHTML = "&#xf2c9;";
+        temp.style.color = "yellow";
+    }, 2000);
+
+    setTimeout(() => {
+        temp.innerHTML = "&#xf2c8;";
+        temp.style.color = "orange";
+    }, 3000);
+
+    setTimeout(() => {
+        temp.innerHTML = "&#xf2c7;";
+        temp.style.color = "red";
+    }, 4000);
+  }
+  thermometer();
+
+  setInterval(thermometer, 5000);
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making a layout using css grid</title>
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            /* display: grid; */
+            place-items: center;
+            padding: 100px 0;
+        }
+        img{
+            max-width: 100%;
+            min-height: 150px;
+            height: 250px;
+            display: inline;
+        }
+        .item1{
+            display: grid;
+        }
+        .container{
+            width: 90vw;
+            display:grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            grid-template-rows: repeat(5,minmax(250px,1fr));
+            column-gap: 0;
+            row-gap: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item4"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div> -->
+       <div class="item item5"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item6"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item7"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item8"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+        <div class="item item9"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUC1IN3GjuqFXK611sXF_ic2nB55CcpI5q-26Q8KDO&s" alt="Cup image..."></div>
+    </div>
+</body>
+</html>

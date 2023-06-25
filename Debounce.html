@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing in javascript</title>
+    <style>
+        input {
+            padding: .5em;
+            width: 30%;
+            border-radius: 8px;
+            border: none;
+            outline: 1px solid black;
+            font-size: 1.5em;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-block: 2rem;
+            font-size: 2rem;
+        }
+
+        li {
+            padding-left: .5em;
+            margin: 1rem;
+        }
+
+        li::marker {
+            content: "🔥";
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="Enter text to search">
+    <ul>
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+        <li>Mango</li>
+        <li>Peach</li>
+    </ul>
+</body>
+<script>
+
+    let input = document.querySelector("[type='text']"),
+        listitems = document.querySelectorAll("li");
+
+    function filterText(item,timer) {
+    setTimeout(() => {
+        console.log(item)
+            input.addEventListener("input",() => {
+                if(input.value == ""){
+                    item.style.display = ""
+                }
+            })
+            if (!input.value.toLowerCase().includes(item.innerText.toLowerCase())) {
+                item.style.display = "none"
+            } else {
+                item.style.display = ""
+            }
+    },timer)
+    }
+
+    input.addEventListener("input", (e) => {
+        listitems.forEach(item => {
+           let debounce = filterText(item,1000);
+        })
+    })
+</script>
+
+</html>

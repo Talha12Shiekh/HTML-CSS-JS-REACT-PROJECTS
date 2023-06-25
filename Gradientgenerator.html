@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient generator</title>
+    <style>
+        body{
+            display: flex;justify-content: center;align-items: center;height: 100vh;
+        }
+        .box{
+            width:30%;aspect-ratio: 1; background-color: rgb(198 191 191 / 19%);padding: 1em;border-radius: 10px;
+        }
+        .gradient_box{
+            width:100%;height: 45%;background: linear-gradient(to right,#c7c727,#3ce13c);border-radius: 10px;
+        }
+        .options_container{
+            margin-block:1rem;display: flex;justify-content: space-between;
+        }
+        select{
+            padding: .4em;font-size: 1.5em;box-sizing: border-box;border: none;
+        }
+        input[type]{
+            height: 2.9rem;width: 80px;margin-left: .5rem;border-radius: 10px;border: none;
+        }
+        .txtarea{
+            height: 20%;
+        }
+        textarea{
+            width: 100%;resize: none;height: 100%;border-radius: 10px;font-size: 1.3rem;padding: 3px;color: black;
+        }
+        button{
+            width: 100%;margin-top: 2rem;padding: .8em;font-size: 1.5rem;background-color: rgb(237, 74, 74);border: none;outline: none;color: white;border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="gradient_box"></div>
+        <div class="options_container">
+            <div class="selection_container">
+                <select>
+                    <option value="to right">to right</option>
+                    <option value="to top">to top</option>
+                    <option value="to left">to left</option>
+                    <option value="to bottom">to bottom</option>
+                </select>
+            </div>
+          <div class="inputs_container">
+            <input type="color" value="#c7c727">
+            <input type="color" value="#3ce13c">
+          </div>  
+        </div>
+        <div class="txtarea">
+            <textarea disabled>background: linear-gradient(to right,#c7c727,#3ce13c);</textarea>
+        </div>
+        <button>Copy color</button>
+    </div>
+</body>
+<script>
+    let inputs = document.querySelectorAll("input");
+    let box = document.querySelector("[class='gradient_box']");
+    let select = document.querySelector("select");
+    let textarea = document.querySelector("textarea");
+    let button = document.querySelector("button");
+
+    inputs.forEach(input => {
+        input.addEventListener("input",handleColors)
+    });
+
+    select.addEventListener("change",handleColors);
+
+    button?.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(textarea.value);
+
+        button.innerText = "Color copied";
+
+        setTimeout(() => {
+        button.innerText = "Copy color";
+        }, 2000);
+    })
+
+    function handleColors() {
+        box.style.background = `linear-gradient(${select.value},${inputs[0].value},${inputs[1].value})`     
+        textarea.value = `background: linear-gradient(${select.value},${inputs[0].value},${inputs[1].value})`
+    }
+</script>
+</html>

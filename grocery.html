@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making a todo grocery list using html css and js</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            margin-top: 1em;
+            font-style:italic;
+        }
+
+        .container {
+            height: 80vh;
+            width: 35%;
+            border: 2px solid black;
+            border-radius: 5px;
+            overflow-y: scroll;
+            box-shadow: 10px 10px 24px 0px rgb(0, 0, 0, 0.5);
+        }
+
+        .container h1 {
+            text-align: center;
+            margin-top: 0.5em;
+        }
+
+        input {
+            width: 90%;
+            padding: 1em;
+            font-size: 1em;
+            border-radius: 5em;
+            margin: 2em 1em;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #btn {
+            margin-top: 1.2em;
+            width: 6vw;
+            padding: 8px;
+            border: 2px solid transparent;
+            border-radius: 19px;
+            background: #00000096;
+            color: white;
+        }
+
+        #all-Items h2 {
+            margin-top: .5em;
+            margin-left: 1em;
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="container">
+            <div class="content">
+                <h1>Grocery List</h1>
+                <button id="btn">CLEAR</button>
+            </div>
+                <input type="text" placeholder="Add some items to view it below">
+            <div id="all-Items">
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    
+    let form = document.getElementById('form');
+    let input = document.getElementsByTagName('input')[0];
+    let button = document.getElementById('btn');
+    let items = document.getElementById('all-Items');
+
+    button.addEventListener('click', () => {
+        items.innerHTML = "";
+    });
+
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === 'Enter') {
+            let value = input.value;
+            let button = document.createElement('button');
+            let btntext = document.createTextNode('X')
+            button.setAttribute('style','background:red; padding: .5em;border-radius: 50%; margin-right: 2em;margin-top: 1em;color:white;border:2px solid transparent');
+            button.append(btntext);
+            let h2 = document.createElement('h2');
+            let parentdiv = document.createElement('div');
+            parentdiv.setAttribute('style','width:100%;display:flex;justify-content:space-between');
+            parentdiv.appendChild(h2);
+            parentdiv.appendChild(button);
+
+            h2.innerHTML = "- " + value;
+            items.appendChild(parentdiv);
+            button.addEventListener('click',()=>{
+                parentdiv.remove();
+            })
+            input.value = "";
+            h2.addEventListener('click', () => {
+                if (h2.style.textDecoration == 'line-through') {
+                    h2.style.textDecoration = 'none'
+                } else {
+                    h2.style.textDecoration = 'line-through'
+                }
+            })
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>making a website layout using css grid</title>
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 62.5%;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:cyan;
+        }
+        main{
+            width: 100rem;
+            background-color: #e6e6e6;
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            grid-template-rows: 50px 100px 100px 50px;
+            grid-gap: 5rem;
+        }
+        nav{
+            background-color: #d3c6b8;
+            font-size:larger;
+            grid-column:1/-1;
+        }
+        aside{
+            background: red;
+            font-size:larger;
+            grid-row:2/span 2;
+        }
+        .box1{
+            background:pink;
+            font-size:larger;
+
+        }
+        .box2{
+            background:green;
+            font-size:larger;
+        }
+        .box3{
+            background:orange;
+            font-size:larger;
+        }
+        .main-content{
+            background: purple;
+            font-size:larger;
+            grid-column: 2/span 3;
+        }
+        footer{
+            background: grey;
+            font-size:larger;
+            grid-column:1/-1;
+        }
+    </style>
+</head>
+<body>
+   <main>
+    <nav>Navbar</nav>
+    <aside>Out side section</aside>
+    <article class="box1">box1</article>
+    <article class="box2">box2</article>
+    <article class="box3">box3</article>
+    <section class="main-content">Main content part</section>
+    <footer>Footer</footer>
+   </main>
+</body>
+</html>

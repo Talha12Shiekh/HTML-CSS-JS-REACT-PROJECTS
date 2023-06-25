@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making a profile image selector</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+        }
+        .box {
+            width:22%;
+            aspect-ratio: 1;
+            text-align: center;
+            background-color: rgb(198 191 191 / 19%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 10px;
+        }
+        .box .img_box{
+            width:120px;
+            height: 120px;
+            cursor: pointer;
+        }
+        .box .img_box img{
+            width:100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid grey;
+        }
+        input{
+           display: none;
+        }
+        p{
+            font-size: 2rem;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="img_box">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="Loadingg...." id="image">
+        </div>
+        <p>file.name</p>
+        <input type="file">
+    </div>
+</body>
+<script>
+    let box = document.querySelector("[class='img_box']");
+    let input = document.querySelector("[type='file']");
+    let para = document.querySelector(".box p");
+    box.addEventListener("click",() => {
+        input.click()
+    })
+    input.addEventListener("change",function(e){
+        let img = document.querySelector("#image");
+        img.src = URL.createObjectURL(this.files[0]);
+        console.log(URL.createObjectURL(this.files[0]))
+        para.textContent = this.files[0].name
+    })
+</script>
+</html>

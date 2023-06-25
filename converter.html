@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?fwasily=Inconsolata:wght@300&display=swap" rel="stylesheet"> 
+    
+    <title>temprature converter</title>
+    <style>
+        
+        *{margin: 0; 
+        padding: 0;
+        box-sizing: border-box;}
+        body{
+            height: 90vh;
+            width: 100vh;
+            
+            background: rgb(52, 52, 148);
+            font-family: 'Inconsolata', monospace;
+        }
+        .container{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+
+            height: 62vh;
+width: 56vw;
+            background: yellowgreen;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            border: 2px solid black ;
+            border-radius: 15px;
+            
+        }
+        label{
+            font-size: x-large;
+            line-height: 50px;
+            text-transform: capitalize;
+        }
+        
+        input{
+            width: 15vw;
+            height: 35px;
+            
+        }
+        select,#temp{
+            height: 35px;
+            width: 14vw;
+            margin: 15px 5px;
+            background: white;
+            border: 2px solid transparent ;
+            border-radius: 5px;
+            font-family: 'Inconsolata', monospace;
+            text-align: center;
+        }
+        .btn{
+            background: black;
+            color: #fff;
+            border: 2px solid transparent ;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            font-family: 'Inconsolata', monospace;
+        }
+
+        span{
+            display: inline-block;
+            background: yellow;
+height: 30px;
+margin-top: 14px;
+padding: 7px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="box">
+            <form id="tempcalc" onsubmit="calctemp(); return false;">
+                <label for="temp">please enter the temprature you would like to convert ?</label>
+        <br>
+        <input type="number" name="temp" id="temp">
+
+        <select name="tempdiff" id="tempdiff">
+            <option value="cel" id="cel">celsius</option>
+            <option value="far" id="far">fahrenheit</option>
+        </select> <br>
+        <input type="submit" value="submit" class="btn">  <br />
+        <span class="result" id="resut"></span>
+    </form>
+</div>
+</div>
+</body>
+<script>
+    const calctemp = () =>{
+        const numbertemp = document.getElementById('temp').value;
+        // console.log(numbertemp);
+
+        const tmpselected = document.getElementById('tempdiff');
+        const valuetemp = tempdiff.options[tmpselected.selectedIndex].value;
+console.log(valuetemp);
+
+
+let result;
+
+const celtofar = (cel) =>{
+    let fahrenheit = Math.round((cel * 9/5) + 32);
+    return fahrenheit;
+}
+
+const fartocel = (fahr) =>{
+    let celsius = Math.round((fahr - 32) * 5/9);
+    return celsius;
+}
+
+
+
+if (valuetemp == 'cel'){
+    result = celtofar(numbertemp);
+    document.getElementById('resut').innerHTML = `${result}&#176;celsius`;
+} else {
+    result = fartocel(numbertemp);
+    document.getElementById('resut').innerHTML = `${result}&#176;fahrenheit`;
+}
+    }
+</script>
+</html>

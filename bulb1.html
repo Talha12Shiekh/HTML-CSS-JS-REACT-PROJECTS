@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?fwasily=Inconsolata:wght@300&display=swap" rel="stylesheet"> 
+    <title>making an on off bulb</title>
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+     .container{
+         background: rgb(24, 24, 241);
+         height: 100vh;
+         width: 100vw;
+         font-family: 'Inconsolata', monospace;
+         
+     }
+     .box{
+         padding-top: 10%;
+     }
+     h1{
+         text-align: center;
+         color: #fff;
+     }
+     h1::selection{
+         background: red;
+     }
+     img{
+        height: 120px;
+        display: flex;
+        margin: 15px auto;
+        margin-top: 34px;
+
+     }
+     .btns{
+         text-align: center;
+     }
+     
+     button{
+        background: rgb(253, 253, 0);
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+            border: 2px solid transparent;
+            border-radius: 9px;
+            font-family: 'Inconsolata', monospace;
+            margin: 0px 55px;
+            color: black;
+     }
+     button:active{
+         background: red;
+         border: 2px solid black;
+     }
+    </style>
+</head>
+<body>
+    <div class="container">
+     <div class="box">
+         <h1>Can you turn the bulb on ?</h1>
+         <img src="off bulb.png" id="btnimage" >
+         <div class="btns">
+
+             <button onclick="document.getElementById('btnimage').src= 'onimage.png'">Turn the bulb on</button>
+             <button onclick="document.getElementById('btnimage').src= 'off bulb.png'">Turn the bulb off</button>
+             
+            </div>
+            </div>
+    </div>
+</body>
+</html>

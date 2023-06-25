@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making a slider using HTML CSS and JS</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .slider_container{
+            width: 200%;
+             aspect-ratio: 2/1;
+            position: relative;
+            overflow: hidden;
+            background-color: red;
+            /* display: grid;
+            grid-auto-flow: column;
+            grid-template-columns:100% 100% 100% 100%; */
+            gap: 1rem;
+            margin-left: -5rem; 
+        }
+        .slider_container  > div{                
+            background-color: yellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 5rem;
+            position: absolute;height: 100%;width: 100%;
+        }
+        .btns_container{
+            display: flex;
+            justify-content: space-around;
+            margin-block: 2rem;
+            gap: 1rem;
+            align-items: center;
+        }
+        .btns_container > button{
+            padding: 1em;font-size: 1em;border: 10px solid red;border-radius: 50%;
+            cursor: pointer;background: yellow;
+        }
+        .slide{
+            transition:transform 1s ease;
+        }
+        .slide[data-status="active"]{
+            transform: translateX(0)
+        }
+        .slide[data-status="right-active"]{
+            transform: translate(100%)
+        }
+        .slide[data-status="left-active"]{
+            transform: translate(-100%)
+        }
+    </style>
+</head>
+<body>
+    <div class="slider_and_btns_container">
+        <div class="slider_container">
+            <div class="slide" data-status="active"  data-index="0">
+               1st slide
+            </div>
+            <div class="slide" data-status="right-active" data-index="1">
+                2nd slide
+            </div>
+            <div class="slide" data-status="right-active" data-index="2">
+                3rd slide
+            </div>
+            <div class="slide" data-status="right-active" data-index="3">
+                4rth slide
+            </div>
+        </div>
+        <div class="btns_container">
+            <button onclick="backSlides()">Backward</button>
+            <button onclick="moveSlides()">Foward</button>
+        </div>
+    </div>
+</body>
+<script>
+    let activeIndex = 0;
+    let slides = document.getElementsByClassName("slide");
+
+    function moveSlides() {
+        let nextindex= activeIndex +1 < slides.length  ? activeIndex +1: 0;
+        
+        let currentSlide = document.querySelector(`[data-index="${activeIndex}"]`),
+        nextslide = document.querySelector(`[data-index="${nextindex}"]`);
+
+
+        currentSlide.dataset.status = "left-active";
+
+        nextslide.dataset.status = "active";
+
+        activeIndex = nextindex;
+    }
+    function backSlides() {
+        let nextindex= activeIndex - 1 < 0 ? 3 : activeIndex - 1
+        
+        let currentSlide = document.querySelector(`[data-index="${activeIndex}"]`),
+        nextslide = document.querySelector(`[data-index="${nextindex}"]`);
+
+
+        currentSlide.dataset.status = "right-active";
+
+        nextslide.dataset.status = "active";
+
+        activeIndex = nextindex;
+    }
+</script>
+</html>

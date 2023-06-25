@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Dancing+Script:wght@500&family=Inconsolata:wght@700&family=Indie+Flower&family=Lato:ital,wght@0,400;1,700&family=Poppins:wght@300&family=Roboto&family=Rubik:wght@500&family=Sansita+Swashed:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
+}
+
+body {
+    background-color: #c68c53a8;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 24px;
+}
+
+.main-container {
+    width: 95%;
+    margin: auto;
+}
+
+.container1 {
+    margin-left: 5%;
+}
+
+.container2 {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.container3 {
+    display: none;
+    position: absolute;
+    top: 26%;
+    left: 40%;
+}
+
+textarea {
+    box-shadow: 10px 10px 24px 0px rgb(0, 0, 0, 0.75);
+    outline: none;
+    border: none;
+    width: 275px;
+    height: 275px;
+    padding: 40px 25px 25px 25px;
+    font-size: 27px;
+}
+
+button {
+    background: #b1f539;
+    padding: 8px;
+    margin-top: 10px;
+    border: 2px solid transparent;
+    border-radius: 9px;
+    box-shadow: 2px 3px 0px 0px #00000087;
+    text-align: center;
+}
+
+button:active {
+    box-shadow: 2px 3px 0px 2px #00000087;
+}
+
+svg {
+    color: grey;
+    /* transform: rotate(3deg); */
+}
+
+#check-btn {
+    position: absolute;
+    right: 17%;
+    top: 4%;
+}
+
+#x-icon {
+    position: absolute;
+    right: 5%;
+    top: 4%;
+}

@@ -1,0 +1,151 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    height: 100vh;
+    background:#f3f3f3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items{
+    font-size: 2rem;
+}
+
+.item1{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:green;
+    text-transform:uppercase;
+}
+.item2{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:pink;
+    text-transform:uppercase;
+}
+.item3{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:yellow;
+    text-transform:uppercase;
+}
+.item4{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:orange;
+    text-transform:uppercase;
+}
+.item5{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:purple;
+    text-transform:uppercase;
+}
+.item6{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:red;
+    text-transform:uppercase;
+}
+.item7{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:brown;
+    text-transform:uppercase;
+}
+.item8{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:blue;
+    text-transform:uppercase;
+}
+.item9{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:chartreuse;
+    text-transform:uppercase;
+}
+
+.container{
+    width:1000px;
+    background:#efedec; 
+    border:1rem solid black;
+    display:grid;
+    /* grid-template-columns: 300px 300px 300px; */
+    /* ye uper waly ko aisay likhnay kay bjai ap repeat fucntion ko use krsaktay ho repeat(kitnin bar repeat karana hai,or width kitni column ki)*/
+    grid-template-columns: repeat(2,1fr) 1fr;
+    /* grid-template-columns: 1fr 2fr 3fr; */
+    grid-template-rows: repeat(3,100px) ;
+    /* grid-template-rows:4 00px 100px 30px; */
+    /* grid-column-gap:10px;
+    grid-row-gap:10px; */
+    grid-gap:10px;
+    grid-auto-rows: 100px;/* it will add the specifc height to all the grids that are not specified */
+    /*grid-auto-flow: column;/* it will make the direction of the grid to column just like flex-direction:column */
+    grid-auto-columns: 1fr;/* it will add the specifc widht to all the grids that are not specified */
+}
+
+.item1{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start:4;
+    grid-row-end:4;
+}
+
+.item3{
+    /* grid-row-start: 3;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3; */
+    grid-area:3/2/3/3;
+    grid-row:3/3;
+    grid-column:2/3;
+}
+
+.item2{
+    /* grid-row-start: 1;
+    grid-row-end: 2; */
+    /* is ko aisay bhi likh saktay hain  */
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+
+.item9{
+    grid-row:1/2;
+    grid-column: 1/2;
+}
+
+.item5{
+    /* 2) grid-area:2/1/3/4; */
+    /* the other way  */
+    /* 1) grid-row:2/3;
+    grid-column:1/span 3; */
+    /* span tell how much do you want to expand the specified column and row  */
+    /* hanging-punctuation: ; */
+    /* the third way  */
+   /*3)*/ grid-row:2/3;
+    grid-column:1/-1;   
+}
+
+.item6{
+    grid-row:3/4;
+    grid-column:1/-1;
+}

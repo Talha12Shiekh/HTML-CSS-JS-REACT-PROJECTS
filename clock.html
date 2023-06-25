@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating a Wall clock in javascript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 15px;
+            font-size: xxx-large;
+        }
+
+        #clock {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #time {
+            font-size: xxx-large;
+            font-size: xxx-large;
+            background: chartreuse;
+            padding: 8px;
+            border: 2px solid;
+            border-radius: 14px;
+        }
+
+        button {
+            margin: 5rem;
+            background: yellow;
+            padding: 8px;
+            border: 2px solid transparent;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button:active {
+            background: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body onload="wallclock();">
+    <h1>Current Time</h1>
+    <div id="clock">
+        <div id="time"></div>
+        <button onclick="clearInterval(clock)">Stop Clock</button>
+    </div>
+</body>
+<script>
+    function wallclock() {
+        let currentTime = new Date();
+        let currentHours = currentTime.getHours();
+        let currentMinutes = currentTime.getMinutes();
+        let currentSeconds = currentTime.getSeconds();
+
+        let timeOfDay = (currentHours < 12) ? "AM" : "PM";
+
+        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+
+        currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+
+        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+
+        currentHours = (currentHours == 0) ? 12 : currentHours;
+
+
+        let timeStr = `${currentHours} : ${currentMinutes} : ${currentSeconds} ${timeOfDay}`;
+
+
+
+        document.getElementById('time').innerHTML = timeStr;
+    }
+    let clock = setInterval(wallclock, 1000);
+    console.log(clock);
+</script>
+
+</html>

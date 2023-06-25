@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning justify align properties of css</title>
+    <style>
+        *{
+            margin: 0; 
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:whitesmoke;
+        }
+        .container{
+            height: 55vh;
+            width: 55vw;
+            background-color: white;
+            display: grid;
+            padding: 2rem;
+            align-content: center;
+            justify-content: center;
+            grid-template-columns: repeat(2,150px) minmax(100px,400px);
+            /* max content property will set the width of the specified parent according to the content  */
+            /* min content property will set the width of the specified parent according to the longest word or element  */
+            grid-template-rows: repeat(2,minmax(min-content,150px));
+        }
+        .item{
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            border:1px solid black;
+        }
+        .item6{
+            display: grid;
+            justify-content:center;
+            align-content: center;
+            /* padding: 8px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1"><span>item1</span><span>item1</span></div>
+        <div class="item item2">item2</div>
+        <div class="item item3">item3</div>
+        <div class="item item4">item4</div>
+        <div class="item item5">item5</div>
+        <div class="item item6">item6 Lorem ipsum dolor sit amet consectetur adipisicing elit. Non eum Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores amet alias, molestiae illum animi fugiat neque, hic harum architecto natus omnis earum ipsam nulla. Omnis suscipit id deserunt reiciendis doloribus accusantium culpa at delectus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis dignissimos velit cupiditate! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam id asperiores, sint libero deleniti explicabo rem illum corrupti incidunt alias, temporibus eligendi, vel est consequuntur? Eum ipsam repudiandae accusantium obcaecati quasi expedita nobis saepe?</div>
+    </div>
+</body>
+<script>
+    let colors = ["yellow","orange","red","green","blue"];
+    let innerColor = "white"
+    let i =0;
+    let items = document.getElementsByClassName("item");
+    for(let item of items){
+        item.style.background = colors[i>colors.length -1 ? i=0 : i++];
+        if(item.style.background == "yellow"){
+            item.style.color = "black";
+        }else{
+            item.style.color = innerColor;
+        }
+    }
+</script>
+</html>
