@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      h2 {
+        color: chartreuse;
+        font-size: 8rem;
+        font-family: consolas;
+      }
+      .btns {
+        margin-top: 4rem;
+        display: flex;
+        gap: 3rem;
+      }
+      button {
+        background: chartreuse;
+        width: 10vw;
+        height: 7vh;
+        font-size: 1.5rem;
+        font-weight: bold;
+        font-family: consolas;
+        border: 0;
+        box-shadow: 2px 2px 26px 2px gold;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>0</h2>
+    <div class="btns">
+    <button onclick="increase()">START</button>
+      <button onclick="stop()">STOP</button>
+    </div>
+  </body>
+ <script>
+    let timer = document.querySelector("h2"),
+    count = 0,
+    interval;
+
+    (() => {
+        timer.innerHTML = JSON.parse(localStorage.getItem("count"))
+    })()
+
+    function increaseCounter(){
+        count++;
+        
+        timer.innerHTML = count;
+
+        localStorage.setItem("count",JSON.stringify(count));
+    }
+
+    function increase(){
+        interval = setInterval(increaseCounter)
+    }
+
+    function stop(){
+        clearInterval(interval)
+        timer.innerHTML = count;
+
+        localStorage.setItem("count",JSON.stringify(count));
+    }
+ </script>
+</html>
