@@ -1,90 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creating a Wall clock in javascript</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            text-align: center;
-            margin: 15px;
-            font-size: xxx-large;
-        }
-
-        #clock {
-            height: 80vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        #time {
-            font-size: xxx-large;
-            font-size: xxx-large;
-            background: chartreuse;
-            padding: 8px;
-            border: 2px solid;
-            border-radius: 14px;
-        }
-
-        button {
-            margin: 5rem;
-            background: yellow;
-            padding: 8px;
-            border: 2px solid transparent;
-            border-radius: 5px;
-            text-align: center;
-        }
-
-        button:active {
-            background: red;
-            color: white;
-        }
+      body {
+        background-color: black;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .clock_container {
+        width: 30vw;
+        aspect-ratio: 1;
+        border: 10px solid chartreuse;
+        border-radius: 50%;
+        box-shadow: 2px 2px 30px 3px chartreuse;
+        position: relative;
+      }
+      .clock_container .needle {
+        color: chartreuse;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 2.5rem;
+        font-family: system-ui;
+      }
+      .clock_container .needle:nth-child(1) {
+        transform: rotate(30deg);
+      }
+      .clock_container .needle:nth-child(2) {
+        transform: rotate(60deg);
+      }
+      .clock_container .needle:nth-child(3) {
+        transform: rotate(90deg);
+      }
+      .clock_container .needle:nth-child(4) {
+        transform: rotate(120deg);
+      }
+      .clock_container .needle:nth-child(5) {
+        transform: rotate(150deg);
+      }
+      .clock_container .needle:nth-child(6) {
+        transform: rotate(180deg);
+      }
+      .clock_container .needle:nth-child(7) {
+        transform: rotate(210deg);
+      }
+      .clock_container .needle:nth-child(8) {
+        transform: rotate(240deg);
+      }
+      .clock_container .needle:nth-child(9) {
+        transform: rotate(270deg);
+      }
+      .clock_container .needle:nth-child(10) {
+        transform: rotate(300deg);
+      }
+      .clock_container .needle:nth-child(11) {
+        transform: rotate(330deg);
+      }
+      .center_dot {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: chartreuse;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .needle.hour,.needle.minutes,.needle.seconds{
+        background: chartreuse;
+        border-top-right-radius: 10px;
+        border-top-left-radius: 10px;
+        transform-origin:bottom ;
+      }
+      .needle.hour {
+        width: 11px;
+        height: 20vh;
+        left: 12.4rem;
+        top: 4.8rem;
+      }
+      .needle.minutes {
+        height: 30vh;
+        width: 8px;
+        top: 10px;
+        left: 12.5rem;
+      }
+      .needle.seconds {
+        width: 5px;
+        height: 32vh;
+        background: chartreuse;
+        left: 12.6rem;
+      }
     </style>
-</head>
-
-<body onload="wallclock();">
-    <h1>Current Time</h1>
-    <div id="clock">
-        <div id="time"></div>
-        <button onclick="clearInterval(clock)">Stop Clock</button>
+  </head>
+  <body>
+    <div class="clock_container">
+      <div class="needle number">1</div>
+      <div class="needle number">2</div>
+      <div class="needle number">3</div>
+      <div class="needle number">4</div>
+      <div class="needle number">5</div>
+      <div class="needle number">6</div>
+      <div class="needle number">7</div>
+      <div class="needle number">8</div>
+      <div class="needle number">9</div>
+      <div class="needle number">10</div>
+      <div class="needle number">11</div>
+      <div class="needle number">12</div>
+      <div class="needle hour"></div>
+      <div class="needle minutes"></div>
+      <div class="needle seconds"></div>
+      <div class="center_dot"></div>
     </div>
-</body>
-<script>
-    function wallclock() {
-        let currentTime = new Date();
-        let currentHours = currentTime.getHours();
-        let currentMinutes = currentTime.getMinutes();
-        let currentSeconds = currentTime.getSeconds();
+  </body>
+  <script>
+    let hours_needle = document.querySelector(".hour"),
+      minutes_needle = document.querySelector(".minutes"),
+      seconds_needle = document.querySelector(".seconds");
 
-        let timeOfDay = (currentHours < 12) ? "AM" : "PM";
-
-        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
-
-        currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
-
-        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
-
-        currentHours = (currentHours == 0) ? 12 : currentHours;
-
-
-        let timeStr = `${currentHours} : ${currentMinutes} : ${currentSeconds} ${timeOfDay}`;
-
-
-
-        document.getElementById('time').innerHTML = timeStr;
-    }
-    let clock = setInterval(wallclock, 1000);
-    console.log(clock);
-</script>
-
+    setInterval(() => {
+      let date = new Date(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        seconds = date.getSeconds(),
+        h_rotation = 30 * hours + minutes / 2,
+        m_rotation = 6 * minutes,
+        s_rotation = 6 * seconds;
+      hours_needle.style.transform = `rotate(${h_rotation}deg)`;
+      minutes_needle.style.transform = `rotate(${m_rotation}deg)`;
+      seconds_needle.style.transform = `rotate(${s_rotation}deg)`;
+    }, 1000);
+  </script>
 </html>
