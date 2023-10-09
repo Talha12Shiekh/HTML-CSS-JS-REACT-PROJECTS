@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: rgb(226, 16, 226);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+.container{
+    width: 35%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.container .textare_container textarea{
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container .textare_container{
+    width: 100%;
+    height: 50vh;
+}
+
+.extension_name_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 1rem;
+}
+
+
+.extension_name_container input{
+    padding: .3em;
+    font-size: 1.5rem;
+    width: 70%;
+}
+
+.extension_name_container select{
+    padding: .5em;
+    width: 195px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.texts_container{
+    color: black;
+    font-size: 1.5rem;
+}
+
+
+button{
+    width: 100%;
+    padding: .5em;
+    font-size: 1.5rem;
+    background-color: rgb(226, 16, 226);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.texts_container{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    gap: 7rem;
+    align-items: center;
+}

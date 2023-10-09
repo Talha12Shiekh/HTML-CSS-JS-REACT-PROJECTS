@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Maker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="textare_container">
+            <textarea id="text_area" placeholder="Write the file contents"></textarea>
+        </div>
+        <div class="texts_container">
+            <div>Type name</div>
+            <div>Save as</div>
+        </div>
+        <div class="extension_name_container">
+            <div class="input_container">
+                <input type="text" id="file_name" placeholder="File name">
+            </div>
+            <div class="select_menu_container">
+                <select>
+                    <option value="text/plain">Text file (.txt)</option>
+                    <option value="text/javascript">Javascript file (.js)</option>
+                    <option value="text/css">Css file (.css)</option>
+                    <option value="text/html">HTML file (.html)</option>
+                    <option value="application/json">JSON file (.json)</option>
+                </select>
+            </div>
+        </div>
+        <div class="btn_container">
+            <button id="download_btn">Download file</button>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
