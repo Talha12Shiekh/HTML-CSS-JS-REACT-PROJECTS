@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR code generator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: royalblue;
+        font-family: "Poppins", sans-serif;
+      }
+      .container {
+        width: 35vw;
+        padding: 1em;
+        border: 1px solid black;
+        background-color: white;
+        border-radius: 10px;
+      }
+      .container input {
+        width: 100%;
+        padding: 15px;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5em;
+      }
+      .bar_code_container {
+        width: 100%;
+        height: 0vh;
+        overflow: hidden;
+        margin-block: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.45s linear;
+      }
+      .bar_code_container img {
+        width: 250px;
+        height: 250px;
+      }
+      button {
+        width: 100%;
+        padding: 0.7em;
+        font-size: 1.3em;
+        background-color: royalblue;
+        font-family: "Poppins", sans-serif;
+        border: 0;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 10px;
+      }
+      h2{
+        text-align: center;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .animate_barcode {
+        height: 50vh !important;
+      }
+      @media (max-width: 1035px) {
+        .container {
+          width: 55vw !important;
+        }
+      }
+      @media (max-width: 750px) {
+        .container {
+          width: 65vw !important;
+        }
+      }
+      @media (max-width: 540px) {
+        .container {
+          width: 85vw !important;
+        }
+      }
+
+      .btns{
+        display: flex;
+        gap: 1rem;
+      }
+
+      .btns button:not(:first-child){
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" placeholder="Enter the URL" />
+      <div class="bar_code_container">
+        <div class="loading"></div>
+      </div>
+      <div class="btns">
+          <button>Generate</button>
+          <button>Download</button>
+        </div>
+    </div>
+  </body>
+  <script>
+    const getElement = (element) => document.querySelector(element);
+
+    let button = getElement(".btns button:first-child"),
+      barCodeContainer = getElement(".bar_code_container"),
+      input = getElement("input"),
+      image = getElement("img"),
+      loading = getElement(".loading"),
+      downloadButton = getElement(".btns button:not(:first-child)"),
+      barCodeURL = null;
+
+    async function showBarCode(api) {
+      loading.innerHTML = `<h2>Loading...</h2>`;
+
+      try {
+        let response = await fetch(api);
+
+        loading.innerHTML = `<img src="${response.url}"" alt="Loading...">`;
+      } catch {
+        loading.innerHTML = `<h2>Check your network connection</h2>`;
+      }
+      button.disabled = false;
+    }
+
+    button.addEventListener("click", () => {
+      let value = input.value;
+      if (value) {
+        barCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${value}`;
+      } else {
+        barCodeURL = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://talhawebsite.netlify.app/`;
+      }
+
+      barCodeContainer.classList.add("animate_barcode");
+      button.disabled = true;
+      showBarCode(barCodeURL);
+    });
+
+    downloadButton.addEventListener("click",async () => {
+        if (!input.value) return alert("Enter the URL to download it !")
+        let DownloadURL = await fetch(barCodeURL),
+        BlobResponse = await DownloadURL.blob();        
+        let anchor = document.createElement("a");
+        anchor.href = URL.createObjectURL(BlobResponse);
+        anchor.download = "QrCode";
+        anchor.click()
+    })
+  </script>
+</html>
