@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Making todo list</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Poppins", sans-serif;
+      }
+      .container {
+        width: 30vw;
+        height: 80vh;
+        box-shadow: 0px 2px 20px 4px grey;
+        padding: 1em;
+        overflow-y: auto;
+      }
+      input {
+        width: 95%;
+        padding: 10px;
+        font-size: 1.5rem;
+      }
+      .items_container {
+        margin-top: 1rem;
+      }
+      .single_item {
+        display: flex;
+        gap:10px;
+        align-items: center;
+      }
+      .single_item svg {
+        cursor: pointer;
+      }
+      .single_item.completed h3 {
+        text-decoration: line-through;
+        text-decoration-thickness: 8px;
+        text-decoration-color:red ;
+      }
+      button {
+        margin-top: 1rem;
+        width: 100%;
+        padding: 10px;
+        font-family: "Poppins", sans-serif;
+        background-color: aqua;
+        border: 1px solid grey;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <input type="text" placeholder="Write task" />
+        <button>Clear All</button>
+      <div class="items_container"></div>
+    
+    </div>
+  </body>
+  <script>
+    const $ = (el) => document.querySelector(el);
+
+    let input = $("input[type='text']"),
+      items_container = $(".items_container"),
+      items = [],
+      button = $("button");
+
+      
+
+      function checkList(key){
+        const findedItem = items.find(ite => ite.key == key);
+        findedItem.checked = !findedItem.checked;
+        localStorage.setItem("items",JSON.stringify(items));
+        addItems()
+      }
+
+    function addItems() {
+        let localItem = localStorage.getItem("items");
+        if(localItem){
+            items = JSON.parse(localItem)
+        }else {
+            items = []
+        }
+        items_container.innerHTML = ""
+        items.forEach(({value,checked,key}) => {
+            let item = `<div class="single_item ${checked ? 'completed' : ''}">
+                <div onclick="checkList(${key})">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 1024 1024"><path fill="currentColor" d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-200 0H360v-72h304v72z"/></svg>
+                </div>
+                <div>
+                    <h3>${value}</h3>
+                </div>
+            </div>`;
+            items_container.innerHTML += item; 
+            input.value = ""    
+        });         
+    }
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key == "Enter") {
+        if(e.target.value !== ""){
+            let itemObject = {value:e.target.value,checked:false,key:Date.now().toString()};
+            items.push(itemObject)
+            localStorage.setItem("items",JSON.stringify(items))
+            addItems(itemObject);
+        }
+        
+      }
+    });
+
+    button.addEventListener("click",() => {
+        items = [];
+        localStorage.setItem("items",JSON.stringify(items))
+        addItems()
+    })
+
+    addItems()
+  </script>
+</html>
