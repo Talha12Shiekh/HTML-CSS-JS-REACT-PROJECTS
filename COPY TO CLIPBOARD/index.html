@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image generator</title>
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="input_and_btn">
+        <input type="text" placeholder="Search Image .." />
+        <button>Generate</button>
+      </div>
+      <div class="image_container">
+        <img src="search.jpg" loading="lazy" />
+      </div>
+      <div class="download_btn">
+        <button class="dnlod">Download</button>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const getElement = (elem) => document.querySelector(elem);
+  let searchInput = getElement("input"),
+    searchButton = getElement(".input_and_btn button"),
+    image = getElement(".image_container img"),
+    imageContainer = getElement(".image_container"),
+    downloadButton = getElement(".dnlod");
+
+  searchButton.addEventListener("click", () => {
+    image.src = "";
+    let loadingBar = `<div class="loader center"></div>`;
+    imageContainer.insertAdjacentHTML("afterBegin", loadingBar);
+    if(searchInput.value == ""){
+      image.src = "questionmark.jpg"
+    }else {
+      image.src = `https://source.unsplash.com/random/900×700/?${searchInput.value}`;
+    }
+
+    image.addEventListener("load", () => {
+      image.classList.add("active");
+      let loader = getElement(".loader");
+      loader.remove();
+
+      setTimeout(() => {
+        image.classList.remove("active");
+      }, 1000);
+      searchInput.value = "";
+    });
+  });
+
+  let IMAGEURL = image.src;
+
+  downloadButton.addEventListener("click", async () => {
+    IMAGEURL = image.src;
+    console.log(IMAGEURL)
+    const fetchedImage = await fetch(IMAGEURL);
+    const imageBlog = await fetchedImage.blob();
+    const imageURL = URL.createObjectURL(imageBlog);
+    const link = document.createElement("a");
+    link.href = imageURL;
+    link.download = "Image";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+</script>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+  :root {
+    --body-background: #1b998b;
+    --container-color: #f8f1ff;
+    --button-background: #decdf5;
+    --download-btn-background: #534d56;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: var(--body-background);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    width: 35%;
+    aspect-ratio: 1;
+    padding: 1.5em;
+    background: var(--container-color);
+    box-shadow: 10px 9px 44px -3px rgba(0, 0, 0, 0.75);
+  }
+  .input_and_btn {
+    margin-bottom: 1rem;
+  }
+  .input_and_btn input {
+    padding: 0.5em;
+    font-size: 1.2rem;
+    width: 72%;
+    font-family: "Poppins", sans-serif;
+  }
+  .input_and_btn input:focus {
+      box-shadow:2px 1px 7px 2px var(--body-background);
+      outline:none;
+      border:2px solid var(--body-background);
+  }
+  
+  .input_and_btn button {
+    background-color: var(--body-background);
+    padding: 0.6em;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    color:var(--container-color);
+    border:none;
+  }
+  .image_container {
+    height: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .image_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1);
+    transition: all 0.18s linear;
+  }
+  .image_container img.active {
+    animation: imageAnimation 0.1s linear;
+  }
+  .download_btn {
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .download_btn button {
+    background: var(--body-background);
+    width: 100%;
+    padding: 0.5em;
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    margin-top: 15px;
+    border: none;
+    color: white;
+  }
+  @keyframes imageAnimation {
+    from {
+      transform: scale(0.7);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid var(--body-background); /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  .center {
+    position: absolute;
+    top: 30%;
+    right: 35%;
+    transform: translate(-50%, -30%);
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
