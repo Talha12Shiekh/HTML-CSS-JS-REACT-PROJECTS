@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme generator</title>
+    <style>
+        *{ margin: 0; padding: 0; box-sizing: border-box;}
+
+        body { height: 100vh; }
+
+        .flex { display: flex; justify-content: center; align-items: center; }
+
+        .container { width: 40vw; aspect-ratio: 1; flex-direction: column; gap: 2rem; box-shadow: 2px 2px 20px 2px rgb(210,209,209); position: relative; }
+
+        .meme_container { width: 24vw; aspect-ratio: 1; }
+
+        .meme_container img { width: 100%; height: 100%; object-fit: contain; }
+
+        h1,h4 { font-family: system-ui; }
+
+        h4 { position: absolute; bottom: 10px; right: 10px; }
+
+        button { font-size: 1.5rem; padding: .2em; cursor: pointer;}
+    </style>
+</head>
+<body class="flex">
+    <div class="container flex">
+        <h4></h4>
+        <div class="meme_container flex">
+            <img src="search.jpg" alt="Loading...">
+        </div>
+        <div class="button_container">
+            <button>Generate Meme</button>
+        </div>
+    </div>
+</body>
+<script>
+    let button = document.querySelector("button"),
+    image = document.querySelector("img"),
+    memeContainer = document.querySelector(".meme_container"),
+    Author = document.querySelector("h4");
+
+    button.addEventListener("click",async () => {
+        let loading = `<h1>Loading...</h1>`;
+
+        memeContainer.innerHTML = loading;
+
+        let FetchedImage = await fetch("https://meme-api.com/gimme");
+        let {url,author} = await FetchedImage.json()
+
+        memeContainer.innerHTML = `<img src="${url}" alt="Loading...">`;
+        Author.innerText = author;
+    })
+</script>
+</html>
