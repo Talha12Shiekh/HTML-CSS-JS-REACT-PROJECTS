@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chin Tapak Dam Dam</title>
+    <style>
+        body{
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        .scale{
+            transform: scale(1.8);
+        }
+        img{
+            transition: transform 0.5s linear;
+        }
+    </style>
+</head>
+<body>
+    <img src="chin-tapak-dm-dm.png" alt="Loading..." width="250" height="250">
+</body>
+<script>
+    let image = document.querySelector("img"),
+    sound = new Audio("./chin-tapak-music.mp3");
+
+    image.addEventListener("click",() => {
+        image.classList.add("scale");
+        sound.play();
+
+        setTimeout(() => {
+            image.classList.remove("scale");
+            sound.pause();
+            sound.currentTime = 0;
+        },3000)
+    })
+</script>
+</html>
