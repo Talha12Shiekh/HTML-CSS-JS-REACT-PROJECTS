@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --menu-border-width: 0.6rem;
+  --light-black: rgba(0, 0, 0, 0.1);
+  --light-white: rgba(255, 255, 255, 0.1);
+  --menu-background: #1b1b1b;
+  --menu-border: #34373b;
+  --scrollbar-bg: #282a2c;
+}
+body {
+  margin: 0;
+}
+
+.topbar_container {
+  background-color: white;
+  padding: 0.5em;
+  width: 95%;
+  box-shadow: 1px 1px 10px 0px var(--light-black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 2em;
+  position: relative;
+}
+
+.left_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.icon_btn:hover {
+  background-color: var(--light-black);
+}
+
+.bar_icon {
+  width: 70%;
+  height: 70%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.grey {
+  filter: invert(0.4);
+}
+
+.gmail_icon {
+  width: 40px;
+  height: 40px;
+  margin-inline: 1rem;
+}
+
+.gmail_icon_container h2 {
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+  color: grey;
+}
+
+.icons_container {
+  display: flex;
+  gap: 1rem;
+}
+
+.right_container {
+  z-index: 999999;
+}
+
+.menu_container {
+  max-height: 63vh;
+  background-color: var(--menu-background);
+  position: absolute;
+  right: 5rem;
+  top: 5rem;
+  border-radius: 10px;
+  border: var(--menu-border-width) solid var(--menu-border);
+  padding: 1.5em;
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  overflow-y: auto;
+  gap: 1rem;
+  border-radius: 20px;
+  border-right-width: 0rem;
+  z-index: 9999999;
+  transition: all 0.5s ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.animate_menu {
+  animation: appearMenu 0.5s ease;
+}
+
+@keyframes appearMenu {
+  0% {
+    transform: translateY(2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.menu_icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.border-round {
+  border-radius: 50%;
+}
+
+.single_menu_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.5em;
+  border-radius: 10px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.single_menu_item:hover {
+  background-color: var(--light-white);
+}
+
+.single_menu_item h3 {
+  margin: 0;
+  font-family: "Poppins", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.menu_container::-webkit-scrollbar {
+  width: var(--menu-border-width);
+  background-color: var(--scrollbar-bg);
+  border-radius: 50%;
+}
+
+.menu_container::-webkit-scrollbar-track {
+  border-radius: 10px;
+  padding-block: 5rem;
+}
+
+.menu_container::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  box-shadow: none;
+  height: 500px;
+  max-height: 33%;
+}
+
+.menu_container::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
