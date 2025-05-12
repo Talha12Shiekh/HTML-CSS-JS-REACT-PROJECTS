@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: goldenrod;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tags_container {
+  width: 45vw;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading_container {
+  gap: 0.5rem;
+  justify-content: start;
+  font-size: 0.8rem;
+}
+
+.heading_container h1 {
+  font-family: "Poppins", sans-serif;
+}
+
+.desc_container {
+  margin-block: 1em;
+}
+
+.desc_container h4,
+.remaining_text h4 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.btn_remaning_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.remove_btn button {
+  background-color: goldenrod;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 0.5em;
+  padding-inline: 1em;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.remove_btn button:active {
+  transform: scale(0.9);
+}
+
+.tags {
+  top: 0;
+  bottom: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #80808040;
+  padding: 0.5em;
+  border-radius: 3px;
+  border: 1px solid rgba(128, 128, 128, 0.37);
+  font-family: "Poppins", sans-serif;
+  gap: 0.5rem;
+}
+
+.tag button {
+  background-color: rgba(128, 128, 128, 0.37);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3em;
+  font-size: 1rem;
+  color: grey;
+  cursor: pointer;
+}
+
+.tags_input_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.7em;
+  border: 1px solid grey;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.tags_input_box input {
+  flex: 1;
+  min-width: 120px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus .tags_input_box {
+  border: 1px solid orangered;
+}
+
+.tags_input_box:focus-within {
+  border-color: orange;
+}
